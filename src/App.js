@@ -6,7 +6,7 @@ import { defaultDeck } from "./state/card";
 
 function App() {
   const [page, setPage] = React.useState("Top");
-  const [state, setState] = React.useState({ health: 19, maxHealth: 20 });
+  const [state, setState] = React.useState({ health: 20, maxHealth: 20 });
   const [deck, setDeck] = React.useState(defaultDeck);
   const [deckDialogOpen, setDeckDialogOpen] = React.useState(false);
   return (
