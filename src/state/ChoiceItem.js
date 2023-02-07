@@ -12,13 +12,13 @@ export const choiceItem = [
   },
   {
     no: 1,
-    text: "体力を5失う。",
+    text: "ランダムなカードを取得",
     effect: (setFunc, nowState, choiceOpen) => {
       setFunc({
-        health: nowState.health - 5,
+        health: nowState.health,
         maxHealth: nowState.maxHealth,
       });
-      choiceOpen({ open: false, isCoice: true });
+      choiceOpen({ open: false, isCoice: false });
     },
   },
   {

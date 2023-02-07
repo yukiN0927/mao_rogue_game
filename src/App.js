@@ -18,6 +18,7 @@ function App() {
           state={state}
           setState={setState}
           deck={deck}
+          setDeck={setDeck}
           deckDialogOpen={deckDialogOpen}
           setDeckDialogOpen={setDeckDialogOpen}
         />
