@@ -126,7 +126,7 @@ function ConversationPart(props) {
         : speechArea()}
 
       <img src={room} alt="title" />
-      <HealthBar state={state} setState={setState} />
+      <HealthBar state={state} />
       {cardButton()}
       {choiceOpen.open && (
         <Choice

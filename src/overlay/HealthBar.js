@@ -4,7 +4,7 @@ import { Stage, Layer, Rect } from "react-konva";
 import { Typography } from "@mui/material";
 
 function HealthBar(props) {
-  const { state, setState, deckDialogOpen } = props;
+  const { state } = props;
   return (
     <>
       <div className="HealthBar">

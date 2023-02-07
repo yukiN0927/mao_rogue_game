@@ -1,8 +1,6 @@
 import * as React from "react";
-import { defaultDeck } from "../state/card";
 import "./scss/CardChoiceDialog.scss";
-import { IconButton, Tooltip } from "@mui/material";
-import CloseIcon from "@material-ui/icons/Close";
+import { Tooltip } from "@mui/material";
 
 function CardChoiceDialog(props) {
   const { setCardChoiceDialogOpen, selectCard, deck, setDeck, setChoiceOpen } =
