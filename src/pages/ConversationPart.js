@@ -8,6 +8,7 @@ import { prologue } from "../state/prologue";
 import Choice from "../overlay/Choice";
 import { choiceItem } from "../state/ChoiceItem";
 import CardChoiceDialog from "../overlay/CardChoiceDialog";
+import { nextButtonView, moneyView } from "../overlay/StateView";
 
 function ConversationPart(props) {
   const {
@@ -27,7 +28,7 @@ function ConversationPart(props) {
     isCoice: false,
   });
   //キャラクター表示
-  const charactor = () => {
+  const charactorView = () => {
     return (
       <div className="Charactor">
         <img src={prologue[serif].img} alt="title" />
@@ -35,7 +36,7 @@ function ConversationPart(props) {
     );
   };
   // デッキダイアログ
-  const deckDialog = () => {
+  const deckDialogView = () => {
     return (
       <div className="ViewDialog">
         <DeckDialog setDeckDialogOpen={setDeckDialogOpen} deck={deck} />
@@ -43,7 +44,7 @@ function ConversationPart(props) {
     );
   };
   // 会話 & ストーリー
-  const speechArea = () => {
+  const speechAreaView = () => {
     return (
       <div
         className="SpeechArea"
@@ -63,7 +64,7 @@ function ConversationPart(props) {
     );
   };
   //取得カード選択ダイアログ
-  const cardChoiceDialog = () => {
+  const cardChoiceDialogView = () => {
     return (
       <div className="ViewDialog">
         <CardChoiceDialog
@@ -77,7 +78,7 @@ function ConversationPart(props) {
     );
   };
   // カードダイアログ表示ボタン
-  const cardButton = () => {
+  const cardButtonView = () => {
     return (
       <div className="CardButton">
         {!choiceOpen.open && (
@@ -92,42 +93,21 @@ function ConversationPart(props) {
       </div>
     );
   };
-  //"次の部屋"ボタン
-  const nextButton = () => {
-    return (
-      <div
-        style={{
-          position: "absolute",
-          top: "500px",
-          left: "850px",
-          minWidth: "500px",
-        }}
-      >
-        <Button
-          fullWidth
-          style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
-          onClick={() => {
-            setPage("");
-          }}
-        >
-          <p style={{ fontSize: 18, color: "white" }}>次の部屋へ</p>
-        </Button>
-      </div>
-    );
-  };
+
   //-------------------- 画面 --------------------//
   return (
     <div className="ConversationPart">
-      {charactor()}
+      {charactorView()}
       {deckDialogOpen
-        ? deckDialog()
+        ? deckDialogView()
         : cardChoiceDialogOpen
-        ? cardChoiceDialog()
-        : speechArea()}
+        ? cardChoiceDialogView()
+        : speechAreaView()}
 
       <img src={room} alt="title" />
       <HealthBar state={state} />
-      {cardButton()}
+      {moneyView(state.money)}
+      {cardButtonView()}
       {choiceOpen.open && (
         <Choice
           choiceItem={choiceItem}
@@ -138,7 +118,11 @@ function ConversationPart(props) {
           setSelectCard={setSelectCard}
         />
       )}
-      {deckDialogOpen ? <></> : choiceOpen.isCoice && nextButton()}
+      {deckDialogOpen ? (
+        <></>
+      ) : (
+        choiceOpen.isCoice && nextButtonView(setPage, setState, state)
+      )}
     </div>
   );
 }

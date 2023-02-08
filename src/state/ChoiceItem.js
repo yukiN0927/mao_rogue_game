@@ -6,6 +6,8 @@ export const choiceItem = [
       setFunc({
         health: nowState.health + 10,
         maxHealth: nowState.maxHealth + 10,
+        money: nowState.money,
+        roomNo: nowState.roomNo,
       });
       choiceOpen({ open: false, isCoice: true });
     },
@@ -17,17 +19,21 @@ export const choiceItem = [
       setFunc({
         health: nowState.health,
         maxHealth: nowState.maxHealth,
+        money: nowState.money,
+        roomNo: nowState.roomNo,
       });
       choiceOpen({ open: false, isCoice: false });
     },
   },
   {
     no: 1,
-    text: "何もしない",
+    text: "$100獲得",
     effect: (setFunc, nowState, choiceOpen) => {
       setFunc({
         health: nowState.health,
         maxHealth: nowState.maxHealth,
+        money: nowState.money + 100,
+        roomNo: nowState.roomNo,
       });
       choiceOpen({ open: false, isCoice: true });
     },
