@@ -8,6 +8,7 @@ export const choiceItem = [
         maxHealth: nowState.maxHealth + 10,
         money: nowState.money,
         roomNo: nowState.roomNo,
+        energy: nowState.energy,
       });
       choiceOpen({ open: false, isCoice: true });
     },
@@ -21,6 +22,7 @@ export const choiceItem = [
         maxHealth: nowState.maxHealth,
         money: nowState.money,
         roomNo: nowState.roomNo,
+        energy: nowState.energy,
       });
       choiceOpen({ open: false, isCoice: false });
     },
@@ -34,6 +36,7 @@ export const choiceItem = [
         maxHealth: nowState.maxHealth,
         money: nowState.money + 100,
         roomNo: nowState.roomNo,
+        energy: nowState.energy,
       });
       choiceOpen({ open: false, isCoice: true });
     },
