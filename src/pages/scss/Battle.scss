@@ -1,19 +1,39 @@
 .Battle {
   padding: 100px;
   position: relative;
+  user-select: none;
 }
 
 .enemy {
   position: absolute;
-  left: 400px;
   top: 120px;
-  transition: 1s;
+}
+
+.treasure {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+}
+
+.damege {
+  position: absolute;
+  left: 500px;
+  top: 220px;
 }
 
 .energy {
   position: absolute;
   left: 150px;
   top: 680px;
+  color: black;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.floor {
+  position: absolute;
+  left: 700px;
+  top: 50px;
   color: black;
   font-size: 50px;
   font-weight: 500;

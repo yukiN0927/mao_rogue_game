@@ -21,10 +21,13 @@ function ConversationPart(props) {
     setDeckDialogOpen,
     setHandCard,
     setEnemy,
+    setEnemyAction,
+    setBattleDeck,
+    cardChoiceDialogOpen,
+    setCardChoiceDialogOpen,
   } = props;
   const [serif, setSerif] = React.useState(0);
   const [selectCard, setSelectCard] = React.useState({});
-  const [cardChoiceDialogOpen, setCardChoiceDialogOpen] = React.useState(false);
   const [choiceOpen, setChoiceOpen] = React.useState({
     open: false,
     isCoice: false,
@@ -33,7 +36,11 @@ function ConversationPart(props) {
   const charactorView = () => {
     return (
       <div className="Charactor">
-        <img src={prologue[serif].img} alt="title" />
+        <img
+          src={prologue[serif].img}
+          alt="title"
+          style={{ userSelect: "none" }}
+        />
       </div>
     );
   };
@@ -70,7 +77,10 @@ function ConversationPart(props) {
     return (
       <div className="ViewDialog">
         <CardChoiceDialog
-          setCardChoiceDialogOpen={setCardChoiceDialogOpen}
+          setCardChoiceDialogOpen={(bool) => {
+            setCardChoiceDialogOpen(bool);
+            setChoiceOpen({ open: false, isCoice: true });
+          }}
           selectCard={selectCard}
           deck={deck}
           setDeck={setDeck}
@@ -106,7 +116,7 @@ function ConversationPart(props) {
         ? cardChoiceDialogView()
         : speechAreaView()}
 
-      <img src={room} alt="title" />
+      <img src={room} alt="title" style={{ userSelect: "none" }} />
       <HealthBar state={state} />
       {moneyView(state.money)}
       {cardButtonView()}
@@ -124,7 +134,17 @@ function ConversationPart(props) {
         <></>
       ) : (
         choiceOpen.isCoice &&
-        nextButtonView(setPage, setState, state, setHandCard, deck, setEnemy)
+        nextButtonView(
+          setPage,
+          setState,
+          state,
+          setHandCard,
+          deck,
+          setEnemy,
+          setEnemyAction,
+          setBattleDeck,
+          () => {}
+        )
       )}
     </div>
   );

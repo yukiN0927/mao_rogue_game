@@ -15,11 +15,13 @@ function HealthBar(props) {
         </Stage>
       </div>
       <div className="HealthBar">
-        <Stage width={(300 / state.maxHealth) * state.health} height={25}>
-          <Layer>
-            <Rect fill="rgb(255, 100, 100)" width={300} height={200} />
-          </Layer>
-        </Stage>
+        {state.health > 0 && (
+          <Stage width={(300 / state.maxHealth) * state.health} height={25}>
+            <Layer>
+              <Rect fill="rgb(255, 100, 100)" width={300} height={200} />
+            </Layer>
+          </Stage>
+        )}
       </div>
       <div className="Health">
         <Typography variant="h5">

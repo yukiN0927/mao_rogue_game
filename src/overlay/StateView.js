@@ -7,7 +7,10 @@ export const nextButtonView = (
   nowState,
   setHandCard,
   deck,
-  setEnemy
+  setEnemy,
+  setEnemyAction,
+  setBattleDeck,
+  setchoiceOpen
 ) => {
   return (
     <div
@@ -22,7 +25,15 @@ export const nextButtonView = (
         fullWidth
         style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
         onClick={() => {
-          RandomRoom(setPage, setHandCard, deck, setEnemy);
+          setchoiceOpen(false);
+          RandomRoom(
+            setPage,
+            setHandCard,
+            deck,
+            setEnemy,
+            setEnemyAction,
+            setBattleDeck
+          );
           setState({
             health: nowState.health,
             maxHealth: nowState.maxHealth,
@@ -50,7 +61,7 @@ export const moneyView = (money) => {
         marginLeft: "1150px",
       }}
     >
-      <p style={{ fontSize: "30px" }}>${money}</p>
+      <p style={{ fontSize: "30px", userSelect: "none" }}>${money}</p>
     </div>
   );
 };

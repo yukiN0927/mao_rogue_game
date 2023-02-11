@@ -5,6 +5,9 @@ export const EnemyList = [
     img: slime,
     maxHealth: 15,
     health: 15,
-    actionPattern: [{}],
+    actionPattern: [
+      { damage: 6, guard: 0 },
+      { damage: 3, guard: 3 },
+    ],
   },
 ];

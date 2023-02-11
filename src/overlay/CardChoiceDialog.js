@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./scss/CardChoiceDialog.scss";
-import { Tooltip } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
+import CloseIcon from "@material-ui/icons/Close";
 
 function CardChoiceDialog(props) {
   const { setCardChoiceDialogOpen, selectCard, deck, setDeck, setChoiceOpen } =
@@ -14,6 +15,20 @@ function CardChoiceDialog(props) {
   };
   return (
     <div className="CardChoiceDialog">
+      <div style={{ position: "absolute", right: "10px", top: 400 }}>
+        <Button
+          style={{
+            backgroundColor: "rgba(0,0,0,0.6)",
+            minHeight: "80px",
+            minWidth: "80px",
+          }}
+          onClick={() => {
+            setCardChoiceDialogOpen(false);
+          }}
+        >
+          <p style={{ fontSize: 18, color: "white" }}>カードの取得を諦める</p>
+        </Button>
+      </div>
       <div
         style={{
           marginTop: "100px",
