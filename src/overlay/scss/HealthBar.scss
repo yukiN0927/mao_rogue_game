@@ -1,16 +1,22 @@
 .HealthBar {
   position: absolute;
-  top: 0%;
-  left: 0%;
-  margin-top: 130px;
-  margin-left: 150px;
+  top: 130px;
+  left: 150px;
 }
 
 .Health {
-  width: 50%;
   position: absolute;
-  top: 0%;
-  left: 0%;
-  margin-top: 127px;
-  margin-left: 280px;
+  top: 127px;
+  left: 280px;
+}
+
+.GuardBar {
+  position: absolute;
+  top: 170px;
+  left: 150px;
+}
+.Guard {
+  position: absolute;
+  top: 167px;
+  left: 300px;
 }

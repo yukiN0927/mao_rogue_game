@@ -1,7 +1,14 @@
 import { Button } from "@mui/material";
 import { RandomRoom } from "../state/RandomRoom";
 //"次の部屋"ボタン
-export const nextButtonView = (setPage, setState, nowState, setEnemyAppear) => {
+export const nextButtonView = (
+  setPage,
+  setState,
+  nowState,
+  setHandCard,
+  deck,
+  setEnemy
+) => {
   return (
     <div
       style={{
@@ -15,13 +22,14 @@ export const nextButtonView = (setPage, setState, nowState, setEnemyAppear) => {
         fullWidth
         style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
         onClick={() => {
-          RandomRoom(setPage, setEnemyAppear);
+          RandomRoom(setPage, setHandCard, deck, setEnemy);
           setState({
             health: nowState.health,
             maxHealth: nowState.maxHealth,
             money: nowState.money,
             roomNo: nowState.roomNo + 1,
             energy: nowState.energy,
+            guard: nowState.guard,
           });
         }}
       >

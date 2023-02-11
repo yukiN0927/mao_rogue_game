@@ -2,3 +2,37 @@
   padding: 100px;
   position: relative;
 }
+
+.enemy {
+  position: absolute;
+  left: 400px;
+  top: 120px;
+  transition: 1s;
+}
+
+.energy {
+  position: absolute;
+  left: 150px;
+  top: 680px;
+  color: black;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.handCard {
+  position: absolute;
+  left: 150px;
+  top: 600px;
+}
+
+.bottomArea {
+  position: absolute;
+  left: 100px;
+  top: 820px;
+}
+
+.image {
+  &:hover {
+    box-shadow: -5px -5px 10px #668ad8;
+  }
+}

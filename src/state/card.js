@@ -1,12 +1,13 @@
 import slash from "../images/card/slash.jpg";
+import slashL from "../images/card/slash_l.jpg";
 import guard from "../images/card/guard.jpg";
+import guardL from "../images/card/guard_l.jpg";
 import slashBack from "../images/card/slashBack.jpg";
 import hit from "../images/card/hit.jpg";
 import rage from "../images/card/rage.jpg";
 
 export const cardList = [
   {
-    no: 0,
     cost: 1,
     name: "切り下がり",
     damege: 5,
@@ -16,7 +17,6 @@ export const cardList = [
     description: "対象に5のダメージを与え、3のガード付与",
   },
   {
-    no: 1,
     cost: 0,
     name: "殴る",
     damege: 4,
@@ -26,7 +26,6 @@ export const cardList = [
     description: "対象に4のダメージを与える",
   },
   {
-    no: 2,
     cost: 2,
     name: "暴れる",
     damege: 12,
@@ -39,103 +38,93 @@ export const cardList = [
 
 export const defaultDeck = [
   {
-    no: 1,
     cost: 1,
     name: "斬る",
     damege: 5,
     guard: 0,
     img: slash,
-    largeImg: slash,
+    largeImg: slashL,
     description: "対象に5のダメージを与える",
   },
   {
-    no: 1,
     cost: 1,
     name: "斬る",
     damege: 5,
     guard: 0,
     img: slash,
-    largeImg: slash,
+    largeImg: slashL,
     description: "対象に5のダメージを与える",
   },
   {
-    no: 1,
     cost: 1,
     name: "斬る",
     damege: 5,
     guard: 0,
     img: slash,
-    largeImg: slash,
+    largeImg: slashL,
     description: "対象に5のダメージを与える",
   },
   {
-    no: 1,
     cost: 1,
     name: "斬る",
     damege: 5,
     guard: 0,
     img: slash,
-    largeImg: slash,
+    largeImg: slashL,
     description: "対象に5のダメージを与える",
   },
   {
-    no: 1,
     cost: 1,
     name: "斬る",
     damege: 5,
     guard: 0,
     img: slash,
-    largeImg: slash,
+    largeImg: slashL,
     description: "対象に5のダメージを与える",
   },
   {
-    no: 2,
     cost: 1,
     name: "守る",
     damege: 0,
     guard: 5,
     img: guard,
-    largeImg: guard,
+    largeImg: guardL,
     description: "自身に5のガードを付与",
   },
   {
-    no: 2,
     cost: 1,
     name: "守る",
     damege: 0,
     guard: 5,
     img: guard,
-    largeImg: guard,
+    largeImg: guardL,
     description: "自身に5のガードを付与",
   },
   {
-    no: 2,
     cost: 1,
     name: "守る",
     damege: 0,
     guard: 5,
     img: guard,
-    largeImg: guard,
+    largeImg: guardL,
     description: "自身に5のガードを付与",
   },
   {
-    no: 2,
     cost: 1,
     name: "守る",
     damege: 0,
     guard: 5,
     img: guard,
-    largeImg: guard,
+    largeImg: guardL,
     description: "自身に5のガードを付与",
   },
   {
-    no: 2,
     cost: 1,
     name: "守る",
     damege: 0,
     guard: 5,
     img: guard,
-    largeImg: guard,
+    largeImg: guardL,
     description: "自身に5のガードを付与",
   },
 ];

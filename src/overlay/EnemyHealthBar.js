@@ -17,7 +17,7 @@ function EnemyHealthBar(props) {
       <div className="EnemyHealthBar">
         <Stage width={(300 / state.maxHealth) * state.health} height={25}>
           <Layer>
-            <Rect fill="rgb(255, 100, 100)" width={300} height={200} />
+            <Rect fill="rgb(178, 102, 255)" width={300} height={200} />
           </Layer>
         </Stage>
       </div>

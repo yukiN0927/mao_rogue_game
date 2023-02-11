@@ -26,6 +26,20 @@ function HealthBar(props) {
           {state.health}/{state.maxHealth}
         </Typography>
       </div>
+      {state.guard > 0 && (
+        <>
+          <div className="GuardBar">
+            <Stage width="300" height={25}>
+              <Layer>
+                <Rect fill="rgb(150, 255, 255)" width={300} height={200} />
+              </Layer>
+            </Stage>
+          </div>
+          <div className="Guard">
+            <Typography variant="h5">{state.guard}</Typography>
+          </div>
+        </>
+      )}
     </>
   );
 }

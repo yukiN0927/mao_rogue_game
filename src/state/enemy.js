@@ -1,4 +1,4 @@
-import slime from "../images/enemy/slime.jpg";
+import slime from "../images/enemy/slime.png";
 export const EnemyList = [
   {
     name: "スライム",

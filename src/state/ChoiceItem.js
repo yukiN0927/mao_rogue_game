@@ -9,6 +9,7 @@ export const choiceItem = [
         money: nowState.money,
         roomNo: nowState.roomNo,
         energy: nowState.energy,
+        guard: nowState.guard,
       });
       choiceOpen({ open: false, isCoice: true });
     },
@@ -23,6 +24,7 @@ export const choiceItem = [
         money: nowState.money,
         roomNo: nowState.roomNo,
         energy: nowState.energy,
+        guard: nowState.guard,
       });
       choiceOpen({ open: false, isCoice: false });
     },
@@ -37,6 +39,7 @@ export const choiceItem = [
         money: nowState.money + 100,
         roomNo: nowState.roomNo,
         energy: nowState.energy,
+        guard: nowState.guard,
       });
       choiceOpen({ open: false, isCoice: true });
     },

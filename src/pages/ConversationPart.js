@@ -19,6 +19,8 @@ function ConversationPart(props) {
     setDeck,
     deckDialogOpen,
     setDeckDialogOpen,
+    setHandCard,
+    setEnemy,
   } = props;
   const [serif, setSerif] = React.useState(0);
   const [selectCard, setSelectCard] = React.useState({});
@@ -121,7 +123,8 @@ function ConversationPart(props) {
       {deckDialogOpen ? (
         <></>
       ) : (
-        choiceOpen.isCoice && nextButtonView(setPage, setState, state)
+        choiceOpen.isCoice &&
+        nextButtonView(setPage, setState, state, setHandCard, deck, setEnemy)
       )}
     </div>
   );
