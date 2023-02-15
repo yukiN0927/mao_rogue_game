@@ -1,5 +1,8 @@
 import room from "../images/room.jpg";
-import treasure from "../images/item/treasure.jpg";
+import treasure from "../images/item/treasure.png";
+import enemyDamage from "../images/item/enemyDamage.png";
+import enemyGuard from "../images/item/enemyGuard.png";
+import energy from "../images/item/energy.png";
 import damegeEffectImg from "../images/effect/damegeEffect.png";
 import bottomArea from "../images/view/bottomArea.jpg";
 import React, { useEffect } from "react";
@@ -55,7 +58,16 @@ function Battle(props) {
     var tmpState = state;
     var selectCard = handCard[selectNo];
     if (tmpState.energy - selectCard.cost >= 0) {
-      tmpEnemy.health = tmpEnemy.health - selectCard.damege;
+      if (tmpEnemy.guard > 0) {
+        tmpEnemy.guard = tmpEnemy.guard - selectCard.damege;
+        if (tmpEnemy.guard < 0) {
+          tmpEnemy.health = tmpEnemy.health + tmpEnemy.guard;
+          tmpEnemy.guard = 0;
+        }
+      } else {
+        tmpEnemy.health = tmpEnemy.health - selectCard.damege;
+      }
+
       tmpState.energy = tmpState.energy - selectCard.cost;
       tmpState.guard = tmpState.guard + selectCard.guard;
 
@@ -97,6 +109,7 @@ function Battle(props) {
   // 次のターンを押したときの処理
   const nextTurnAction = () => {
     var tmpState = state;
+    var tmpEnemy = enemy;
     if (tmpState.guard > 0) {
       if (tmpState.guard - enemyAction.damage < 0) {
         tmpState.health =
@@ -105,9 +118,14 @@ function Battle(props) {
     } else {
       tmpState.health = tmpState.health - enemyAction.damage;
     }
+    tmpEnemy.guard = 0;
+    if (enemyAction.guard > 0) {
+      tmpEnemy.guard = enemyAction.guard;
+    }
     tmpState.energy = maxEnergy;
     tmpState.guard = 0;
     setState(tmpState);
+    setEnemy(tmpEnemy);
 
     // deckの中から5枚をランダムで取得する。
     var tmpDeck = Array.from(deck);
@@ -250,32 +268,60 @@ function Battle(props) {
     return (
       <div>
         {enemyAction.damage > 0 && (
-          <p
-            style={{
-              color: "red",
-              fontWeight: 400,
-              fontSize: "50px",
-              position: "absolute",
-              left: "1000px",
-              top: "200px",
-            }}
-          >
-            {enemyAction.damage}
-          </p>
+          <>
+            <div style={{ position: "absolute", left: "950px", top: "260px" }}>
+              <img
+                src={enemyDamage}
+                alt="title"
+                className="img"
+                style={{ maxHeight: 50 }}
+              />
+            </div>
+            <p
+              style={{
+                color: "red",
+                fontWeight: 400,
+                fontSize: "50px",
+                position: "absolute",
+                left: "1000px",
+                top: "200px",
+                userSelect: "none",
+              }}
+            >
+              {enemyAction.damage}
+            </p>
+          </>
         )}
         {enemyAction.guard > 0 && (
-          <p
-            style={{
-              color: "blue",
-              fontWeight: 400,
-              fontSize: "50px",
-              position: "absolute",
-              left: "1000px",
-              top: "250px",
-            }}
-          >
-            {enemyAction.guard}
-          </p>
+          <>
+            <div
+              style={{
+                position: "absolute",
+                left: "950px",
+                top: "310px",
+              }}
+            >
+              <img
+                src={enemyGuard}
+                alt="title"
+                className="img"
+                style={{ maxHeight: 50 }}
+              />
+            </div>
+            <p
+              style={{
+                color: "blue",
+                fontWeight: 400,
+                fontSize: "50px",
+                position: "absolute",
+                left: "1000px",
+                top: "250px",
+                userSelect: "none",
+              }}
+            >
+              {enemyAction.guard}
+            </p>
+          </>
         )}
       </div>
     );
@@ -338,6 +384,9 @@ function Battle(props) {
         {enemy.health > 0 && enemyView()}
         {enemy.health > 0 && <EnemyHealthBar state={enemy} />}
         {<p className="floor">{state.roomNo}階</p>}
+        <div className="energyArea">
+          <img src={energy} alt="title" className="img" />
+        </div>
         {energyView()}
         {damegeEffect && enemyDamegeView()}
         <HealthBar state={state} />

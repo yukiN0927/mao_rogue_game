@@ -4,6 +4,7 @@ import guard from "../images/card/guard.jpg";
 import guardL from "../images/card/guard_l.jpg";
 import slashBack from "../images/card/slashBack.jpg";
 import hit from "../images/card/hit.jpg";
+import hitL from "../images/card/hit_l.jpg";
 import rage from "../images/card/rage.jpg";
 
 export const cardList = [
@@ -22,7 +23,7 @@ export const cardList = [
     damege: 4,
     guard: 0,
     img: hit,
-    largeImg: hit,
+    largeImg: hitL,
     description: "対象に4のダメージを与える",
   },
   {

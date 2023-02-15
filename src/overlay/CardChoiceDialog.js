@@ -38,7 +38,7 @@ function CardChoiceDialog(props) {
       >
         <Tooltip title={selectCard[0].description} placement="top">
           <img
-            src={selectCard[0].img}
+            src={selectCard[0].largeImg}
             alt="card"
             style={{ margin: "10px" }}
             onClick={() => {
@@ -48,7 +48,7 @@ function CardChoiceDialog(props) {
         </Tooltip>
         <Tooltip title={selectCard[1].description} placement="top">
           <img
-            src={selectCard[1].img}
+            src={selectCard[1].largeImg}
             alt="card"
             style={{ margin: "10px" }}
             onClick={() => {
@@ -58,7 +58,7 @@ function CardChoiceDialog(props) {
         </Tooltip>
         <Tooltip title={selectCard[2].description} placement="top">
           <img
-            src={selectCard[2].img}
+            src={selectCard[2].largeImg}
             alt="card"
             style={{ margin: "10px" }}
             onClick={() => {

@@ -49,10 +49,18 @@
   position: absolute;
   left: 100px;
   top: 820px;
+  user-select: none;
 }
 
 .image {
   &:hover {
     box-shadow: -5px -5px 10px #668ad8;
   }
+}
+
+.energyArea {
+  position: absolute;
+  left: 120px;
+  top: 730px;
+  user-select: none;
 }
