@@ -33,6 +33,8 @@ function App() {
   const [battleDeck, setBattleDeck] = React.useState({});
   // 敵情報
   const [enemy, setEnemy] = React.useState({});
+  // イベント情報
+  const [event, setEvent] = React.useState({});
   // 敵の次の行動
   const [enemyAction, setEnemyAction] = React.useState({});
   // カード選択ダイアログ表示
@@ -64,6 +66,7 @@ function App() {
           setBattleDeck={setBattleDeck}
           cardChoiceDialogOpen={cardChoiceDialogOpen}
           setCardChoiceDialogOpen={setCardChoiceDialogOpen}
+          setEvent={setEvent}
         />
       )}
       {page === "Battle" && (
@@ -88,9 +91,23 @@ function App() {
           setCardChoiceDialogOpen={setCardChoiceDialogOpen}
           deckDialogOpen={deckDialogOpen}
           setDeckDialogOpen={setDeckDialogOpen}
+          setEvent={setEvent}
         />
       )}
-      {page === "Event" && <Event />}
+      {page === "Event" && (
+        <Event
+          event={event}
+          state={state}
+          setState={setState}
+          setPage={setPage}
+          setHandCard={setHandCard}
+          deck={deck}
+          setEnemy={setEnemy}
+          setEnemyAction={setEnemyAction}
+          setBattleDeck={setBattleDeck}
+          setEvent={setEvent}
+        />
+      )}
       {state.health <= 0 && gameOver()}
     </>
   );

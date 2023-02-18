@@ -1,4 +1,5 @@
 import { EnemyList } from "./enemy";
+import { EventList } from "./EventList";
 
 export const RandomRoom = (
   setPage,
@@ -6,16 +7,18 @@ export const RandomRoom = (
   deck,
   setEnemy,
   setEnemyAction,
-  setBattleDeck
+  setBattleDeck,
+  setEvent
 ) => {
-  const num = Math.floor(Math.random() * 10 + 1);
-  if (num >= 1 && num <= 9) {
+  const num = Math.floor(Math.random() * 100 + 1);
+  if (num >= 1 && num <= 84) {
     setPage("Battle");
     handCardSet(deck, setHandCard, setBattleDeck);
     randomEnemySet(setEnemy, setEnemyAction);
   }
-  if (num >= 10 && num <= 10) {
+  if (num >= 84 && num <= 100) {
     setPage("Event");
+    randomEventSet(setEvent);
   }
 };
 
@@ -43,4 +46,9 @@ const randomEnemySet = (setEnemy, setEnemyAction) => {
     Math.random() * EnemyList[num].actionPattern.length
   );
   setEnemyAction(EnemyList[num].actionPattern[actionNum]);
+};
+
+const randomEventSet = (setEvent) => {
+  const num = Math.floor(Math.random() * EventList.length);
+  setEvent(EventList[num]);
 };

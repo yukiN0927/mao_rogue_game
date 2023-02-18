@@ -25,6 +25,7 @@ function ConversationPart(props) {
     setBattleDeck,
     cardChoiceDialogOpen,
     setCardChoiceDialogOpen,
+    setEvent,
   } = props;
   const [serif, setSerif] = React.useState(0);
   const [selectCard, setSelectCard] = React.useState({});
@@ -143,6 +144,8 @@ function ConversationPart(props) {
           setEnemy,
           setEnemyAction,
           setBattleDeck,
+          () => {},
+          setEvent,
           () => {}
         )
       )}

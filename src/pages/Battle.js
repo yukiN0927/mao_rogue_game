@@ -37,6 +37,7 @@ function Battle(props) {
     setCardChoiceDialogOpen,
     deckDialogOpen,
     setDeckDialogOpen,
+    setEvent,
   } = props;
 
   useEffect(() => {
@@ -410,7 +411,9 @@ function Battle(props) {
           setEnemy,
           setEnemyAction,
           setBattleDeck,
-          setchoiceOpen
+          setchoiceOpen,
+          setEvent,
+          () => {}
         )}
       {cardButtonView()}
       {deckDialogOpen && deckDialogView()}
