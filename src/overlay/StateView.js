@@ -44,7 +44,8 @@ export const nextButtonView = (
             money: nowState.money,
             roomNo: nowState.roomNo + 1,
             energy: nowState.energy,
-            guard: nowState.guard,
+            guard: 0,
+            power: 0,
           });
         }}
       >

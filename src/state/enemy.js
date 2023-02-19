@@ -7,9 +7,10 @@ export const EnemyList = [
     maxHealth: 20,
     health: 20,
     guard: 0,
+    power: 0,
     actionPattern: [
-      { damage: 7, guard: 0 },
-      { damage: 3, guard: 6 },
+      { damage: 7, guard: 0, power: 0 },
+      { damage: 3, guard: 6, power: 0 },
     ],
   },
   {
@@ -18,9 +19,11 @@ export const EnemyList = [
     maxHealth: 25,
     health: 25,
     guard: 0,
+    power: 0,
     actionPattern: [
-      { damage: 3, guard: 8 },
-      { damage: 10, guard: 0 },
+      { damage: 3, guard: 8, power: 0 },
+      { damage: 9, guard: 0, power: 0 },
+      { damage: 0, guard: 0, power: 2 },
     ],
   },
 ];

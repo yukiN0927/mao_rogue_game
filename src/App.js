@@ -19,6 +19,7 @@ function App() {
     roomNo: 0,
     energy: 3,
     guard: 0,
+    power: 0,
   });
   // エネルギー量
   const [maxEnergy, setMaxEnergy] = React.useState(3);

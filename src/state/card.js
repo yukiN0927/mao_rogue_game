@@ -16,6 +16,8 @@ export const cardList = [
     img: slashBack,
     largeImg: slashBack,
     description: "対象に5のダメージを与え、3のガード付与",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 0,
@@ -25,6 +27,8 @@ export const cardList = [
     img: hit,
     largeImg: hitL,
     description: "対象に4のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 2,
@@ -34,6 +38,19 @@ export const cardList = [
     img: rage,
     largeImg: rage,
     description: "対象に12のダメージを与える",
+    power: 0,
+    powerDown: 0,
+  },
+  {
+    cost: 0,
+    name: "増強",
+    damege: 0,
+    guard: 0,
+    img: rage,
+    largeImg: rage,
+    description: "筋力を1あげる",
+    power: 1,
+    powerDown: 0,
   },
 ];
 
@@ -46,6 +63,8 @@ export const defaultDeck = [
     img: slash,
     largeImg: slashL,
     description: "対象に5のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -55,6 +74,8 @@ export const defaultDeck = [
     img: slash,
     largeImg: slashL,
     description: "対象に5のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -64,6 +85,8 @@ export const defaultDeck = [
     img: slash,
     largeImg: slashL,
     description: "対象に5のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -73,6 +96,8 @@ export const defaultDeck = [
     img: slash,
     largeImg: slashL,
     description: "対象に5のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -82,6 +107,8 @@ export const defaultDeck = [
     img: slash,
     largeImg: slashL,
     description: "対象に5のダメージを与える",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -91,6 +118,8 @@ export const defaultDeck = [
     img: guard,
     largeImg: guardL,
     description: "自身に5のガードを付与",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -100,6 +129,8 @@ export const defaultDeck = [
     img: guard,
     largeImg: guardL,
     description: "自身に5のガードを付与",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -109,6 +140,8 @@ export const defaultDeck = [
     img: guard,
     largeImg: guardL,
     description: "自身に5のガードを付与",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -118,6 +151,8 @@ export const defaultDeck = [
     img: guard,
     largeImg: guardL,
     description: "自身に5のガードを付与",
+    power: 0,
+    powerDown: 0,
   },
   {
     cost: 1,
@@ -127,5 +162,7 @@ export const defaultDeck = [
     img: guard,
     largeImg: guardL,
     description: "自身に5のガードを付与",
+    power: 0,
+    powerDown: 0,
   },
 ];

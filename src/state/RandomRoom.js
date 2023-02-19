@@ -24,6 +24,11 @@ export const RandomRoom = (
     setPage("Event");
     randomEventSet(setEvent);
   }
+  /** test用 */
+  // if (num >= 1 && num <= 100) {
+  //   setPage("Event");
+  //   randomEventSet(setEvent);
+  // }
 };
 
 // デッキから手札を取得する
@@ -41,15 +46,16 @@ const handCardSet = (deck, setHandCard, setBattleDeck) => {
 };
 
 const randomEnemySet = (setEnemy, setEnemyAction) => {
-  const num = Math.floor(Math.random() * EnemyList.length);
-  if (EnemyList[num].health <= 0) {
-    EnemyList[num].health = EnemyList[num].maxHealth;
+  var enemyList = Array.from(EnemyList);
+  const num = Math.floor(Math.random() * enemyList.length);
+  if (enemyList[num].health <= 0) {
+    enemyList[num].health = enemyList[num].maxHealth;
   }
-  setEnemy(EnemyList[num]);
+  setEnemy(enemyList[num]);
   const actionNum = Math.floor(
-    Math.random() * EnemyList[num].actionPattern.length
+    Math.random() * enemyList[num].actionPattern.length
   );
-  setEnemyAction(EnemyList[num].actionPattern[actionNum]);
+  setEnemyAction(enemyList[num].actionPattern[actionNum]);
 };
 
 const randomEventSet = (setEvent) => {

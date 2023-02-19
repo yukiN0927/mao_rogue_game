@@ -58,15 +58,25 @@ function Battle(props) {
     var tmpEnemy = enemy;
     var tmpState = state;
     var selectCard = handCard[selectNo];
+
     if (tmpState.energy - selectCard.cost >= 0) {
-      if (tmpEnemy.guard > 0) {
-        tmpEnemy.guard = tmpEnemy.guard - selectCard.damege;
-        if (tmpEnemy.guard < 0) {
-          tmpEnemy.health = tmpEnemy.health + tmpEnemy.guard;
-          tmpEnemy.guard = 0;
+      // 選択したカードに筋力強化があればステータス強化
+      if (selectCard.power > 0) {
+        tmpState.power = tmpState.power + selectCard.power;
+      }
+      // ダメージ計算
+      if (selectCard.damege > 0) {
+        if (tmpEnemy.guard > 0) {
+          tmpEnemy.guard =
+            tmpEnemy.guard - (selectCard.damege + tmpState.power);
+          if (tmpEnemy.guard < 0) {
+            tmpEnemy.health = tmpEnemy.health + tmpEnemy.guard;
+            tmpEnemy.guard = 0;
+          }
+        } else {
+          tmpEnemy.health =
+            tmpEnemy.health - (selectCard.damege + tmpState.power);
         }
-      } else {
-        tmpEnemy.health = tmpEnemy.health - selectCard.damege;
       }
 
       tmpState.energy = tmpState.energy - selectCard.cost;
@@ -107,21 +117,28 @@ function Battle(props) {
     setYureru("400px");
   };
 
-  // 次のターンを押したときの処理
+  // 敵のターン
   const nextTurnAction = () => {
     var tmpState = state;
     var tmpEnemy = enemy;
-    if (tmpState.guard > 0) {
-      if (tmpState.guard - enemyAction.damage < 0) {
+    if (enemyAction.damage > 0) {
+      if (tmpState.guard > 0) {
+        if (tmpState.guard - (enemyAction.damage + tmpEnemy.power) < 0) {
+          tmpState.health =
+            tmpState.health +
+            (tmpState.guard - (enemyAction.damage + tmpEnemy.power));
+        }
+      } else {
         tmpState.health =
-          tmpState.health + (tmpState.guard - enemyAction.damage);
+          tmpState.health - (enemyAction.damage + tmpEnemy.power);
       }
-    } else {
-      tmpState.health = tmpState.health - enemyAction.damage;
     }
     tmpEnemy.guard = 0;
     if (enemyAction.guard > 0) {
       tmpEnemy.guard = enemyAction.guard;
+    }
+    if (enemyAction.power > 0) {
+      tmpEnemy.power = tmpEnemy.power + enemyAction.power;
     }
     tmpState.energy = maxEnergy;
     tmpState.guard = 0;
@@ -289,7 +306,7 @@ function Battle(props) {
                 userSelect: "none",
               }}
             >
-              {enemyAction.damage}
+              {enemyAction.damage + enemy.power}
             </p>
           </>
         )}
@@ -323,6 +340,61 @@ function Battle(props) {
               {enemyAction.guard}
             </p>
           </>
+        )}
+        {enemyAction.power > 0 && (
+          <p
+            style={{
+              color: "green",
+              fontWeight: 400,
+              fontSize: "50px",
+              position: "absolute",
+              left: "1000px",
+              top: "300px",
+              userSelect: "none",
+            }}
+          >
+            {enemyAction.power}
+          </p>
+        )}
+      </div>
+    );
+  };
+  // 敵のステータス表示
+  const enemyStatePowerView = () => {
+    return (
+      <p
+        style={{
+          color: "red",
+          fontWeight: 400,
+          fontSize: "25px",
+          position: "absolute",
+          left: "560px",
+          top: "495px",
+          userSelect: "none",
+        }}
+      >
+        {enemy.power}
+      </p>
+    );
+  };
+  // ステータス表示
+  const stateView = () => {
+    return (
+      <div>
+        {state.power > 0 && (
+          <p
+            style={{
+              color: "red",
+              fontWeight: 400,
+              fontSize: "50px",
+              position: "absolute",
+              left: "130px",
+              top: "300px",
+              userSelect: "none",
+            }}
+          >
+            {state.power}
+          </p>
         )}
       </div>
     );
@@ -393,11 +465,13 @@ function Battle(props) {
         <HealthBar state={state} />
         {moneyView(state.money)}
         {enemy.health > 0 && handCardView()}
+        {stateView()}
       </div>
       <div className="bottomArea">
         <img src={bottomArea} alt="title" className="img" />
       </div>
       {enemy.health > 0 && enemyActionView()}
+      {enemy.power !== 0 && enemyStatePowerView()}
       {enemy.health > 0 && nextTurn()}
       {treasureViewOpen && treasureView()}
       {cardChoiceDialogOpen && cardChoiceDialogView()}

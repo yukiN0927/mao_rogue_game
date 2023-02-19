@@ -10,6 +10,7 @@ export const choiceItem = [
         roomNo: nowState.roomNo,
         energy: nowState.energy,
         guard: nowState.guard,
+        power: nowState.power,
       });
       choiceOpen({ open: false, isCoice: true });
     },
@@ -25,6 +26,7 @@ export const choiceItem = [
         roomNo: nowState.roomNo,
         energy: nowState.energy,
         guard: nowState.guard,
+        power: nowState.power,
       });
       choiceOpen({ open: false, isCoice: false });
     },
@@ -40,6 +42,7 @@ export const choiceItem = [
         roomNo: nowState.roomNo,
         energy: nowState.energy,
         guard: nowState.guard,
+        power: nowState.power,
       });
       choiceOpen({ open: false, isCoice: true });
     },
