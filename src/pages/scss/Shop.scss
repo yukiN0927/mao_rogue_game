@@ -1,0 +1,13 @@
+.Shop {
+  padding: 100px;
+  position: relative;
+  user-select: none;
+}
+.ViewDialog {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  min-width: 1280px;
+  min-height: 720px;
+  max-height: 720px;
+}

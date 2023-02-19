@@ -11,12 +11,16 @@ export const RandomRoom = (
   setEvent
 ) => {
   const num = Math.floor(Math.random() * 100 + 1);
-  if (num >= 1 && num <= 84) {
+  if (num >= 1 && num <= 74) {
     setPage("Battle");
     handCardSet(deck, setHandCard, setBattleDeck);
     randomEnemySet(setEnemy, setEnemyAction);
   }
-  if (num >= 84 && num <= 100) {
+  if (num >= 75 && num <= 84) {
+    setPage("Shop");
+    randomEventSet(setEvent);
+  }
+  if (num >= 85 && num <= 100) {
     setPage("Event");
     randomEventSet(setEvent);
   }

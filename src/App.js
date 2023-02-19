@@ -6,6 +6,7 @@ import ConversationPart from "./pages/ConversationPart";
 import { defaultDeck } from "./state/card";
 import Event from "./pages/Event";
 import gameover from "./images/gameover.jpg";
+import Shop from "./pages/Shop";
 
 function App() {
   // 特定のページの表示
@@ -100,6 +101,19 @@ function App() {
           state={state}
           setState={setState}
           setPage={setPage}
+          setHandCard={setHandCard}
+          deck={deck}
+          setEnemy={setEnemy}
+          setEnemyAction={setEnemyAction}
+          setBattleDeck={setBattleDeck}
+          setEvent={setEvent}
+        />
+      )}
+      {page === "Shop" && (
+        <Shop
+          setPage={setPage}
+          setState={setState}
+          state={state}
           setHandCard={setHandCard}
           deck={deck}
           setEnemy={setEnemy}

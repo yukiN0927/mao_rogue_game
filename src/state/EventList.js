@@ -19,7 +19,7 @@ export const EventList = [
           setState(tmpState);
         },
       },
-      { text: "何もしない", func: (state, setState) => {} },
+      { text: "立ち去る", func: (state, setState) => {} },
     ],
   },
 ];

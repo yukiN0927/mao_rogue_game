@@ -61,8 +61,8 @@ export const moneyView = (money) => {
         position: "absolute",
         top: "0%",
         left: "0%",
-        marginTop: "120px",
-        marginLeft: "150px",
+        marginTop: "95px",
+        marginLeft: "480px",
       }}
     >
       <p style={{ fontSize: "30px", userSelect: "none" }}>${money}</p>
