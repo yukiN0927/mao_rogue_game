@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./scss/CardChoiceDialog.scss";
-import { Button, IconButton, Tooltip } from "@mui/material";
-import CloseIcon from "@material-ui/icons/Close";
+import { Button, Tooltip } from "@mui/material";
 
 function CardChoiceDialog(props) {
   const { setCardChoiceDialogOpen, selectCard, deck, setDeck, setChoiceOpen } =
@@ -31,7 +30,7 @@ function CardChoiceDialog(props) {
       </div>
       <div
         style={{
-          marginTop: "100px",
+          marginTop: "50px",
           display: "flex",
           justifyContent: "space-evenly",
         }}

@@ -6,7 +6,7 @@
 
 .enemy {
   position: absolute;
-  top: 120px;
+  top: 130px;
 }
 
 .treasure {
@@ -54,7 +54,9 @@
 
 .image {
   &:hover {
+    transition: 0.3s;
     box-shadow: -5px -5px 10px #668ad8;
+    height: 300px;
   }
 }
 

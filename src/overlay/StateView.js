@@ -12,7 +12,8 @@ export const nextButtonView = (
   setBattleDeck,
   setchoiceOpen,
   setEvent,
-  setImg
+  setImg,
+  setshopButtonOpen
 ) => {
   return (
     <div
@@ -27,6 +28,7 @@ export const nextButtonView = (
         fullWidth
         style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
         onClick={() => {
+          setshopButtonOpen(true);
           setImg("");
           setchoiceOpen(false);
           RandomRoom(

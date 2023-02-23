@@ -117,10 +117,13 @@ function App() {
           state={state}
           setHandCard={setHandCard}
           deck={deck}
+          setDeck={setDeck}
           setEnemy={setEnemy}
           setEnemyAction={setEnemyAction}
           setBattleDeck={setBattleDeck}
           setEvent={setEvent}
+          deckDialogOpen={deckDialogOpen}
+          setDeckDialogOpen={setDeckDialogOpen}
         />
       )}
       {state.health <= 0 && gameOver()}

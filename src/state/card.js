@@ -2,10 +2,16 @@ import slash from "../images/card/slash.jpg";
 import slashL from "../images/card/slash_l.jpg";
 import guard from "../images/card/guard.jpg";
 import guardL from "../images/card/guard_l.jpg";
-import slashBack from "../images/card/slashBack.jpg";
 import hit from "../images/card/hit.jpg";
 import hitL from "../images/card/hit_l.jpg";
+import slashBack from "../images/card/slashBack.jpg";
+import slashBackL from "../images/card/slashBack_l.jpg";
 import rage from "../images/card/rage.jpg";
+import rageL from "../images/card/rage_l.jpg";
+import strengthen from "../images/card/strengthen.jpg";
+import strengthenL from "../images/card/strengthen_l.jpg";
+import fall from "../images/card/fall.jpg";
+import fallL from "../images/card/fall_l.jpg";
 
 export const cardList = [
   {
@@ -14,7 +20,7 @@ export const cardList = [
     damege: 5,
     guard: 3,
     img: slashBack,
-    largeImg: slashBack,
+    largeImg: slashBackL,
     description: "対象に5のダメージを与え、3のガード付与",
     power: 0,
     powerDown: 0,
@@ -36,7 +42,7 @@ export const cardList = [
     damege: 12,
     guard: 0,
     img: rage,
-    largeImg: rage,
+    largeImg: rageL,
     description: "対象に12のダメージを与える",
     power: 0,
     powerDown: 0,
@@ -46,11 +52,22 @@ export const cardList = [
     name: "増強",
     damege: 0,
     guard: 0,
-    img: rage,
-    largeImg: rage,
+    img: strengthen,
+    largeImg: strengthenL,
     description: "筋力を1あげる",
     power: 1,
     powerDown: 0,
+  },
+  {
+    cost: 1,
+    name: "落とす",
+    damege: 0,
+    guard: 0,
+    img: fall,
+    largeImg: fallL,
+    description: "敵の筋力を1下げる",
+    power: 0,
+    powerDown: 1,
   },
 ];
 

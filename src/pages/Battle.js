@@ -46,7 +46,7 @@ function Battle(props) {
   // ダメージエフェクトを表示
   const [damegeEffect, setDameeEffect] = React.useState(false);
   // ダメージエフェクトを揺らす
-  const [yureru, setYureru] = React.useState("400px");
+  const [yureru, setYureru] = React.useState("100px");
   // ダメージエフェクトを表示
   const [treasureViewOpen, setTreasureViewOpen] = React.useState(false);
   // 次の部屋ボタン表示
@@ -65,7 +65,7 @@ function Battle(props) {
         tmpState.power = tmpState.power + selectCard.power;
       }
       // ダメージ計算
-      if (selectCard.damege > 0) {
+      if (selectCard.damege + tmpState.power > 0 && selectCard.damege > 0) {
         if (tmpEnemy.guard > 0) {
           tmpEnemy.guard =
             tmpEnemy.guard - (selectCard.damege + tmpState.power);
@@ -77,6 +77,11 @@ function Battle(props) {
           tmpEnemy.health =
             tmpEnemy.health - (selectCard.damege + tmpState.power);
         }
+      }
+
+      // powerDownがある場合敵の攻撃を下げる
+      if (selectCard.powerDown > 0) {
+        tmpEnemy.power = tmpEnemy.power - selectCard.powerDown;
       }
 
       tmpState.energy = tmpState.energy - selectCard.cost;
@@ -106,22 +111,22 @@ function Battle(props) {
     setDameeEffect(false);
   };
   const yureruEffect1 = () => {
-    setYureru("375px");
+    setYureru("75px");
     setTimeout(yureruEffect2, 50);
   };
   const yureruEffect2 = () => {
-    setYureru("425px");
+    setYureru("125px");
     setTimeout(yureruEffect3, 50);
   };
   const yureruEffect3 = () => {
-    setYureru("400px");
+    setYureru("100px");
   };
 
   // 敵のターン
   const nextTurnAction = () => {
     var tmpState = state;
     var tmpEnemy = enemy;
-    if (enemyAction.damage > 0) {
+    if (enemyAction.damage + tmpEnemy.power > 0 && enemyAction.damage > 0) {
       if (tmpState.guard > 0) {
         if (tmpState.guard - (enemyAction.damage + tmpEnemy.power) < 0) {
           tmpState.health =
@@ -139,6 +144,9 @@ function Battle(props) {
     }
     if (enemyAction.power > 0) {
       tmpEnemy.power = tmpEnemy.power + enemyAction.power;
+    }
+    if (enemyAction.powerDown > 0) {
+      tmpState.power = tmpState.power - enemyAction.powerDown;
     }
     tmpState.energy = maxEnergy;
     tmpState.guard = 0;
@@ -170,7 +178,8 @@ function Battle(props) {
   const treasureClick = () => {
     var tmpState = state;
     setCardChoiceDialogOpen(true);
-    const num = Math.floor(Math.random() * 100 + 1);
+    // 20Gから50G ランダムで獲得
+    const num = Math.floor(Math.random() * 30 + 20);
     tmpState.money = tmpState.money + num;
     setState(tmpState);
   };
@@ -306,7 +315,9 @@ function Battle(props) {
                 userSelect: "none",
               }}
             >
-              {enemyAction.damage + enemy.power}
+              {enemyAction.damage + enemy.power >= 0
+                ? enemyAction.damage + enemy.power
+                : 0}
             </p>
           </>
         )}
@@ -356,6 +367,21 @@ function Battle(props) {
             {enemyAction.power}
           </p>
         )}
+        {enemyAction.powerDown > 0 && (
+          <p
+            style={{
+              color: "gray",
+              fontWeight: 400,
+              fontSize: "50px",
+              position: "absolute",
+              left: "1000px",
+              top: "350px",
+              userSelect: "none",
+            }}
+          >
+            {enemyAction.powerDown}
+          </p>
+        )}
       </div>
     );
   };
@@ -381,7 +407,7 @@ function Battle(props) {
   const stateView = () => {
     return (
       <div>
-        {state.power > 0 && (
+        {state.power !== 0 && (
           <p
             style={{
               color: "red",
@@ -456,7 +482,7 @@ function Battle(props) {
         <img src={room} alt="title" className="img" />
         {enemy.health > 0 && enemyView()}
         {enemy.health > 0 && <EnemyHealthBar state={enemy} />}
-        {<p className="floor">{state.roomNo}階</p>}
+        {<p className="floor">部屋 - {state.roomNo}</p>}
         <div className="energyArea">
           <img src={energy} alt="title" className="img" />
         </div>
@@ -465,13 +491,13 @@ function Battle(props) {
         <HealthBar state={state} />
         {moneyView(state.money)}
         {enemy.health > 0 && handCardView()}
-        {stateView()}
+        {enemy.health > 0 && stateView()}
       </div>
       <div className="bottomArea">
         <img src={bottomArea} alt="title" className="img" />
       </div>
       {enemy.health > 0 && enemyActionView()}
-      {enemy.power !== 0 && enemyStatePowerView()}
+      {(enemy.power !== 0) & (enemy.health > 0) && enemyStatePowerView()}
       {enemy.health > 0 && nextTurn()}
       {treasureViewOpen && treasureView()}
       {cardChoiceDialogOpen && cardChoiceDialogView()}
@@ -487,6 +513,7 @@ function Battle(props) {
           setBattleDeck,
           setchoiceOpen,
           setEvent,
+          () => {},
           () => {}
         )}
       {cardButtonView()}

@@ -3,8 +3,6 @@ import "./scss/Event.scss";
 import { Button } from "@mui/material";
 import HealthBar from "../overlay/HealthBar";
 import { nextButtonView, moneyView } from "../overlay/StateView";
-// import HealthBar from "../overlay/HealthBar";
-// import { moneyView } from "../overlay/StateView";
 
 function Event(props) {
   const {
@@ -31,6 +29,7 @@ function Event(props) {
         )}
         <HealthBar state={state} />
         {moneyView(state.money)}
+        {<p className="floor">部屋 - {state.roomNo}</p>}
         {img === "" ? (
           <>
             <div
@@ -88,7 +87,8 @@ function Event(props) {
             setBattleDeck,
             () => {},
             setEvent,
-            setImg
+            setImg,
+            () => {}
           )
         )}
       </div>

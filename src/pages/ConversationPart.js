@@ -146,6 +146,7 @@ function ConversationPart(props) {
           setBattleDeck,
           () => {},
           setEvent,
+          () => {},
           () => {}
         )
       )}

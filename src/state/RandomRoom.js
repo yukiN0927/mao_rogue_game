@@ -11,22 +11,32 @@ export const RandomRoom = (
   setEvent
 ) => {
   const num = Math.floor(Math.random() * 100 + 1);
-  if (num >= 1 && num <= 74) {
-    setPage("Battle");
-    handCardSet(deck, setHandCard, setBattleDeck);
-    randomEnemySet(setEnemy, setEnemyAction);
+  if (EventList.length > 0) {
+    if (num >= 1 && num <= 75) {
+      setPage("Battle");
+      handCardSet(deck, setHandCard, setBattleDeck);
+      randomEnemySet(setEnemy, setEnemyAction);
+    } else if (num >= 76 && num <= 85) {
+      setPage("Shop");
+      randomEventSet(setEvent);
+    } else if (num >= 86 && num <= 100) {
+      setPage("Event");
+      randomEventSet(setEvent);
+    }
+  } else {
+    if (num >= 1 && num <= 90) {
+      setPage("Battle");
+      handCardSet(deck, setHandCard, setBattleDeck);
+      randomEnemySet(setEnemy, setEnemyAction);
+    } else if (num >= 91 && num <= 100) {
+      setPage("Shop");
+      randomEventSet(setEvent);
+    }
   }
-  if (num >= 75 && num <= 84) {
-    setPage("Shop");
-    randomEventSet(setEvent);
-  }
-  if (num >= 85 && num <= 100) {
-    setPage("Event");
-    randomEventSet(setEvent);
-  }
+
   /** test用 */
   // if (num >= 1 && num <= 100) {
-  //   setPage("Event");
+  //   setPage("Shop");
   //   randomEventSet(setEvent);
   // }
 };
@@ -51,6 +61,9 @@ const randomEnemySet = (setEnemy, setEnemyAction) => {
   if (enemyList[num].health <= 0) {
     enemyList[num].health = enemyList[num].maxHealth;
   }
+  if (enemyList[num].power > 0) {
+    enemyList[num].power = 0;
+  }
   setEnemy(enemyList[num]);
   const actionNum = Math.floor(
     Math.random() * enemyList[num].actionPattern.length
@@ -61,4 +74,6 @@ const randomEnemySet = (setEnemy, setEnemyAction) => {
 const randomEventSet = (setEvent) => {
   const num = Math.floor(Math.random() * EventList.length);
   setEvent(EventList[num]);
+  // 一度起こったイベントは削除する
+  EventList.splice(num, 1);
 };
