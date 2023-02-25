@@ -147,6 +147,8 @@ function ConversationPart(props) {
           () => {},
           setEvent,
           () => {},
+          () => {},
+          () => {},
           () => {}
         )
       )}

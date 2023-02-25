@@ -38,6 +38,7 @@ function Battle(props) {
     deckDialogOpen,
     setDeckDialogOpen,
     setEvent,
+    setMaxEnergy,
   } = props;
 
   useEffect(() => {
@@ -83,6 +84,15 @@ function Battle(props) {
       if (selectCard.powerDown > 0) {
         tmpEnemy.power = tmpEnemy.power - selectCard.powerDown;
       }
+      // myDamageがある場合自身の体力を減らす
+      if (selectCard.myDamage > 0) {
+        tmpState.health = tmpState.health - selectCard.myDamage;
+      }
+
+      // energyがある場合エネルギーを増やす
+      if (selectCard.energy > 0) {
+        tmpState.energy = tmpState.energy + selectCard.energy;
+      }
 
       tmpState.energy = tmpState.energy - selectCard.cost;
       tmpState.guard = tmpState.guard + selectCard.guard;
@@ -91,6 +101,27 @@ function Battle(props) {
       var tmpHandCard = Array.from(handCard);
       tmpHandCard.splice(selectNo, 1);
       setHandCard(tmpHandCard);
+
+      // drawがある場合デッキからカードを回収する
+      if (selectCard.draw > 0) {
+        // deckの中から5枚をランダムで取得する。
+        var tmpDeck = Array.from(deck);
+        var tmpBattleDeck = Array.from(battleDeck);
+        console.log(tmpBattleDeck);
+        const tmp = tmpHandCard;
+        for (var i = 0; i < selectCard.draw; i++) {
+          // 山札にカードがなくなった場合捨て札から戻す
+          if (tmpBattleDeck.length <= 0) {
+            tmpBattleDeck = tmpDeck;
+          }
+          const num = Math.floor(Math.random() * tmpBattleDeck.length);
+          tmp.push(tmpBattleDeck[num]);
+          tmpBattleDeck.splice(num, 1);
+        }
+        setHandCard(tmp);
+        setBattleDeck(tmpBattleDeck);
+      }
+
       // ダメージエフェクト
       if (selectCard.damege > 0) {
         setDameeEffect(true);
@@ -276,7 +307,6 @@ function Battle(props) {
           position: "absolute",
           top: "700px",
           left: "1200px",
-          minWidth: "500px",
         }}
       >
         <Button
@@ -497,7 +527,7 @@ function Battle(props) {
         <img src={bottomArea} alt="title" className="img" />
       </div>
       {enemy.health > 0 && enemyActionView()}
-      {(enemy.power !== 0) & (enemy.health > 0) && enemyStatePowerView()}
+      {enemy.power !== 0 && enemy.health > 0 && enemyStatePowerView()}
       {enemy.health > 0 && nextTurn()}
       {treasureViewOpen && treasureView()}
       {cardChoiceDialogOpen && cardChoiceDialogView()}
@@ -513,6 +543,8 @@ function Battle(props) {
           setBattleDeck,
           setchoiceOpen,
           setEvent,
+          () => {},
+          () => {},
           () => {},
           () => {}
         )}

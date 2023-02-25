@@ -119,7 +119,11 @@ function Shop(props) {
           setchoiceOpen,
           setEvent,
           () => {},
-          setshopButtonOpen
+          setshopButtonOpen,
+          setHealButtonOpen,
+          setDeckDeleteButtonOpen,
+          () => {},
+          () => {}
         )}
       {shopOpen && (
         <div className="ViewDialog">

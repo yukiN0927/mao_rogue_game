@@ -23,9 +23,19 @@ function Event(props) {
     <div>
       <div className="Event">
         {img === "" ? (
-          <img src={event.img1} alt="title" className="img" />
+          <img
+            src={event.img1}
+            alt="title"
+            className="img"
+            style={{ height: "720px" }}
+          />
         ) : (
-          <img src={img} alt="title" className="img" />
+          <img
+            src={img}
+            alt="title"
+            className="img"
+            style={{ height: "720px" }}
+          />
         )}
         <HealthBar state={state} />
         {moneyView(state.money)}
@@ -88,6 +98,8 @@ function Event(props) {
             () => {},
             setEvent,
             setImg,
+            () => {},
+            () => {},
             () => {}
           )
         )}

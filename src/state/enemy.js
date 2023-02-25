@@ -36,9 +36,9 @@ export const EnemyList = [
     guard: 0,
     power: 0,
     actionPattern: [
-      { damage: 0, guard: 10, power: 0, powerDown: 1 },
+      { damage: 0, guard: 5, power: 0, powerDown: 1 },
       { damage: 8, guard: 0, power: 0, powerDown: 0 },
-      { damage: 5, guard: 0, power: 0, powerDown: 1 },
+      { damage: 6, guard: 0, power: 0, powerDown: 0 },
     ],
   },
 ];

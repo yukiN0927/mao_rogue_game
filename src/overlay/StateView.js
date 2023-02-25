@@ -13,7 +13,9 @@ export const nextButtonView = (
   setchoiceOpen,
   setEvent,
   setImg,
-  setshopButtonOpen
+  setshopButtonOpen,
+  setHealButtonOpen,
+  setDeckDeleteButtonOpen
 ) => {
   return (
     <div
@@ -28,6 +30,8 @@ export const nextButtonView = (
         fullWidth
         style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
         onClick={() => {
+          setHealButtonOpen(true);
+          setDeckDeleteButtonOpen(true);
           setshopButtonOpen(true);
           setImg("");
           setchoiceOpen(false);
@@ -48,6 +52,7 @@ export const nextButtonView = (
             energy: nowState.energy,
             guard: 0,
             power: 0,
+            sanity: 0,
           });
         }}
       >

@@ -11,6 +11,7 @@ export const choiceItem = [
         energy: nowState.energy,
         guard: nowState.guard,
         power: nowState.power,
+        sanity: nowState.sanity,
       });
       choiceOpen({ open: false, isCoice: true });
     },
@@ -27,6 +28,7 @@ export const choiceItem = [
         energy: nowState.energy,
         guard: nowState.guard,
         power: nowState.power,
+        sanity: nowState.sanity,
       });
       choiceOpen({ open: false, isCoice: false });
     },
@@ -43,6 +45,7 @@ export const choiceItem = [
         energy: nowState.energy,
         guard: nowState.guard,
         power: nowState.power,
+        sanity: nowState.sanity,
       });
       choiceOpen({ open: false, isCoice: true });
     },

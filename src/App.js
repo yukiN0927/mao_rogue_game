@@ -20,6 +20,7 @@ function App() {
     energy: 3,
     guard: 0,
     power: 0,
+    sanity: 0,
   });
   // エネルギー量
   const [maxEnergy, setMaxEnergy] = React.useState(3);
@@ -94,6 +95,7 @@ function App() {
           deckDialogOpen={deckDialogOpen}
           setDeckDialogOpen={setDeckDialogOpen}
           setEvent={setEvent}
+          setMaxEnergy={setMaxEnergy}
         />
       )}
       {page === "Event" && (

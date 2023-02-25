@@ -12,6 +12,10 @@ import strengthen from "../images/card/strengthen.jpg";
 import strengthenL from "../images/card/strengthen_l.jpg";
 import fall from "../images/card/fall.jpg";
 import fallL from "../images/card/fall_l.jpg";
+import draw from "../images/card/draw.jpg";
+import drawL from "../images/card/draw_l.jpg";
+import desperate from "../images/card/desperate.jpg";
+import desperateL from "../images/card/desperate_l.jpg";
 
 export const cardList = [
   {
@@ -24,6 +28,9 @@ export const cardList = [
     description: "対象に5のダメージを与え、3のガード付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 0,
@@ -35,6 +42,9 @@ export const cardList = [
     description: "対象に4のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 2,
@@ -46,6 +56,9 @@ export const cardList = [
     description: "対象に12のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 0,
@@ -57,6 +70,9 @@ export const cardList = [
     description: "筋力を1あげる",
     power: 1,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -68,6 +84,37 @@ export const cardList = [
     description: "敵の筋力を1下げる",
     power: 0,
     powerDown: 1,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
+  },
+  {
+    cost: 1,
+    name: "施し",
+    damege: 0,
+    guard: 0,
+    img: draw,
+    largeImg: drawL,
+    description: "山札からカードを手札に2枚回収する",
+    power: 0,
+    powerDown: 0,
+    draw: 2,
+    myDamage: 0,
+    energy: 0,
+  },
+  {
+    cost: 0,
+    name: "決死",
+    damege: 0,
+    guard: 0,
+    img: desperate,
+    largeImg: desperateL,
+    description: "自身に2ダメージ、エネルギーを1増やす",
+    power: 0,
+    powerDown: 0,
+    draw: 0,
+    myDamage: 2,
+    energy: 1,
   },
 ];
 
@@ -82,6 +129,9 @@ export const defaultDeck = [
     description: "対象に5のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -93,6 +143,9 @@ export const defaultDeck = [
     description: "対象に5のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -104,6 +157,9 @@ export const defaultDeck = [
     description: "対象に5のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -115,6 +171,9 @@ export const defaultDeck = [
     description: "対象に5のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -126,6 +185,9 @@ export const defaultDeck = [
     description: "対象に5のダメージを与える",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -137,6 +199,9 @@ export const defaultDeck = [
     description: "自身に5のガードを付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -148,6 +213,9 @@ export const defaultDeck = [
     description: "自身に5のガードを付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -159,6 +227,9 @@ export const defaultDeck = [
     description: "自身に5のガードを付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -170,6 +241,9 @@ export const defaultDeck = [
     description: "自身に5のガードを付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
   {
     cost: 1,
@@ -181,5 +255,8 @@ export const defaultDeck = [
     description: "自身に5のガードを付与",
     power: 0,
     powerDown: 0,
+    draw: 0,
+    myDamage: 0,
+    energy: 0,
   },
 ];

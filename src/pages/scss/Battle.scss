@@ -53,10 +53,12 @@
 }
 
 .image {
+  position: absolute;
   &:hover {
     transition: 0.3s;
     box-shadow: -5px -5px 10px #668ad8;
-    height: 300px;
+    height: 310px;
+    top: -10px;
   }
 }
 
