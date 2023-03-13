@@ -3,6 +3,7 @@ import "./scss/Event.scss";
 import { Button } from "@mui/material";
 import HealthBar from "../overlay/HealthBar";
 import { nextButtonView, moneyView } from "../overlay/StateView";
+import DeckDialog from "../overlay/DeckDialog";
 
 function Event(props) {
   const {
@@ -16,12 +17,45 @@ function Event(props) {
     setEnemyAction,
     setBattleDeck,
     setEvent,
+    setCompanion,
+    companion,
+    deckDialogOpen,
+    setDeckDialogOpen,
+    setMaxEnergy,
+    maxEnergy,
   } = props;
   // 敵情報
   const [img, setImg] = React.useState("");
+  // デッキダイアログ
+  const deckDialogView = () => {
+    return (
+      <div className="ViewDialog">
+        <DeckDialog
+          setDeckDialogOpen={setDeckDialogOpen}
+          deck={deck}
+          companion={companion}
+        />
+      </div>
+    );
+  };
+  const cardButtonView = () => {
+    return (
+      <div className="CardButton">
+        <Button
+          onClick={() => {
+            setDeckDialogOpen(true);
+          }}
+        >
+          card
+        </Button>
+      </div>
+    );
+  };
   return (
     <div>
       <div className="Event">
+        {cardButtonView()}
+
         {img === "" ? (
           <img
             src={event.img1}
@@ -54,7 +88,14 @@ function Event(props) {
                 fullWidth
                 style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
                 onClick={() => {
-                  event.choice[0].func(state, setState);
+                  event.choice[0].func(
+                    state,
+                    setState,
+                    setCompanion,
+                    companion,
+                    setMaxEnergy,
+                    maxEnergy
+                  );
                   setImg(event.img2);
                 }}
               >
@@ -75,7 +116,14 @@ function Event(props) {
                 fullWidth
                 style={{ backgroundColor: "rgba(0,0,0,0.6)", margin: 20 }}
                 onClick={() => {
-                  event.choice[1].func(state, setState);
+                  event.choice[1].func(
+                    state,
+                    setState,
+                    setCompanion,
+                    companion,
+                    setMaxEnergy,
+                    maxEnergy
+                  );
                   setImg(event.img3);
                 }}
               >
@@ -103,6 +151,7 @@ function Event(props) {
             () => {}
           )
         )}
+        {deckDialogOpen && deckDialogView()}
       </div>
     </div>
   );

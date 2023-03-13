@@ -26,6 +26,7 @@ function ConversationPart(props) {
     cardChoiceDialogOpen,
     setCardChoiceDialogOpen,
     setEvent,
+    companion,
   } = props;
   const [serif, setSerif] = React.useState(0);
   const [selectCard, setSelectCard] = React.useState({});
@@ -49,7 +50,11 @@ function ConversationPart(props) {
   const deckDialogView = () => {
     return (
       <div className="ViewDialog">
-        <DeckDialog setDeckDialogOpen={setDeckDialogOpen} deck={deck} />
+        <DeckDialog
+          setDeckDialogOpen={setDeckDialogOpen}
+          deck={deck}
+          companion={companion}
+        />
       </div>
     );
   };

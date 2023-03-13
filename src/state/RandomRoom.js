@@ -12,14 +12,14 @@ export const RandomRoom = (
 ) => {
   const num = Math.floor(Math.random() * 100 + 1);
   if (EventList.length > 0) {
-    if (num >= 1 && num <= 75) {
+    if (num >= 1 && num <= 70) {
       setPage("Battle");
       handCardSet(deck, setHandCard, setBattleDeck);
       randomEnemySet(setEnemy, setEnemyAction);
-    } else if (num >= 76 && num <= 85) {
+    } else if (num >= 71 && num <= 80) {
       setPage("Shop");
       randomEventSet(setEvent);
-    } else if (num >= 86 && num <= 100) {
+    } else if (num >= 81 && num <= 100) {
       setPage("Event");
       randomEventSet(setEvent);
     }
@@ -36,7 +36,7 @@ export const RandomRoom = (
 
   /** test用 */
   // if (num >= 1 && num <= 100) {
-  //   setPage("Shop");
+  //   setPage("Event");
   //   randomEventSet(setEvent);
   // }
 };
@@ -61,7 +61,7 @@ const randomEnemySet = (setEnemy, setEnemyAction) => {
   if (enemyList[num].health <= 0) {
     enemyList[num].health = enemyList[num].maxHealth;
   }
-  if (enemyList[num].power > 0) {
+  if (enemyList[num].power !== 0) {
     enemyList[num].power = 0;
   }
   setEnemy(enemyList[num]);

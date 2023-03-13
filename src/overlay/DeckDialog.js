@@ -4,9 +4,22 @@ import { IconButton, Tooltip } from "@mui/material";
 import CloseIcon from "@material-ui/icons/Close";
 
 function DeckDialog(props) {
-  const { setDeckDialogOpen, deck } = props;
+  const { setDeckDialogOpen, deck, companion } = props;
   return (
     <div className="Dialog">
+      <div style={{ position: "absolute", left: "10px" }}>
+        {companion.map((chara) => {
+          return (
+            <Tooltip title={chara.effect} placement="top">
+              <img
+                src={chara.img}
+                alt="chara"
+                style={{ margin: "10px", height: "70px" }}
+              />
+            </Tooltip>
+          );
+        })}
+      </div>
       <div style={{ position: "absolute", right: "10px" }}>
         <IconButton
           aria-label="close"

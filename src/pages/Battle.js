@@ -38,7 +38,9 @@ function Battle(props) {
     deckDialogOpen,
     setDeckDialogOpen,
     setEvent,
-    setMaxEnergy,
+    useCardList,
+    setUseCardList,
+    companion,
   } = props;
 
   useEffect(() => {
@@ -59,6 +61,10 @@ function Battle(props) {
     var tmpEnemy = enemy;
     var tmpState = state;
     var selectCard = handCard[selectNo];
+
+    var tmpUseCardList = useCardList;
+    tmpUseCardList.push(selectCard);
+    setUseCardList(tmpUseCardList);
 
     if (tmpState.energy - selectCard.cost >= 0) {
       // 選択したカードに筋力強化があればステータス強化
@@ -105,14 +111,13 @@ function Battle(props) {
       // drawがある場合デッキからカードを回収する
       if (selectCard.draw > 0) {
         // deckの中から5枚をランダムで取得する。
-        var tmpDeck = Array.from(deck);
         var tmpBattleDeck = Array.from(battleDeck);
-        console.log(tmpBattleDeck);
         const tmp = tmpHandCard;
         for (var i = 0; i < selectCard.draw; i++) {
           // 山札にカードがなくなった場合捨て札から戻す
           if (tmpBattleDeck.length <= 0) {
-            tmpBattleDeck = tmpDeck;
+            tmpBattleDeck = useCardList;
+            setUseCardList([]);
           }
           const num = Math.floor(Math.random() * tmpBattleDeck.length);
           tmp.push(tmpBattleDeck[num]);
@@ -485,7 +490,11 @@ function Battle(props) {
   const deckDialogView = () => {
     return (
       <div className="ViewDialog">
-        <DeckDialog setDeckDialogOpen={setDeckDialogOpen} deck={deck} />
+        <DeckDialog
+          setDeckDialogOpen={setDeckDialogOpen}
+          deck={deck}
+          companion={companion}
+        />
       </div>
     );
   };

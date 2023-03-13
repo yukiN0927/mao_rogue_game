@@ -23,6 +23,7 @@ function Shop(props) {
     setEvent,
     deckDialogOpen,
     setDeckDialogOpen,
+    companion,
   } = props;
   // 次の部屋ボタン表示
   const [choiceOpen, setchoiceOpen] = React.useState(false);
@@ -58,7 +59,11 @@ function Shop(props) {
   const deckDialogView = () => {
     return (
       <div className="ViewDialog">
-        <DeckDialog setDeckDialogOpen={setDeckDialogOpen} deck={deck} />
+        <DeckDialog
+          setDeckDialogOpen={setDeckDialogOpen}
+          deck={deck}
+          companion={companion}
+        />
       </div>
     );
   };

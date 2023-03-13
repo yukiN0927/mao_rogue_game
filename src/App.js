@@ -34,6 +34,8 @@ function App() {
   const [handCard, setHandCard] = React.useState({});
   // 手札
   const [battleDeck, setBattleDeck] = React.useState({});
+  // 手札
+  const [useCardList, setUseCardList] = React.useState([]);
   // 敵情報
   const [enemy, setEnemy] = React.useState({});
   // イベント情報
@@ -42,6 +44,8 @@ function App() {
   const [enemyAction, setEnemyAction] = React.useState({});
   // カード選択ダイアログ表示
   const [cardChoiceDialogOpen, setCardChoiceDialogOpen] = React.useState(false);
+  //
+  const [companion, setCompanion] = React.useState([]);
 
   // ------------------- view -------------------
   const gameOver = () => {
@@ -70,6 +74,7 @@ function App() {
           cardChoiceDialogOpen={cardChoiceDialogOpen}
           setCardChoiceDialogOpen={setCardChoiceDialogOpen}
           setEvent={setEvent}
+          companion={companion}
         />
       )}
       {page === "Battle" && (
@@ -95,7 +100,9 @@ function App() {
           deckDialogOpen={deckDialogOpen}
           setDeckDialogOpen={setDeckDialogOpen}
           setEvent={setEvent}
-          setMaxEnergy={setMaxEnergy}
+          useCardList={useCardList}
+          setUseCardList={setUseCardList}
+          companion={companion}
         />
       )}
       {page === "Event" && (
@@ -110,6 +117,12 @@ function App() {
           setEnemyAction={setEnemyAction}
           setBattleDeck={setBattleDeck}
           setEvent={setEvent}
+          setCompanion={setCompanion}
+          companion={companion}
+          deckDialogOpen={deckDialogOpen}
+          setDeckDialogOpen={setDeckDialogOpen}
+          setMaxEnergy={setMaxEnergy}
+          maxEnergy={maxEnergy}
         />
       )}
       {page === "Shop" && (
@@ -126,6 +139,7 @@ function App() {
           setEvent={setEvent}
           deckDialogOpen={deckDialogOpen}
           setDeckDialogOpen={setDeckDialogOpen}
+          companion={companion}
         />
       )}
       {state.health <= 0 && gameOver()}
